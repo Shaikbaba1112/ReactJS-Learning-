@@ -235,3 +235,18 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+#filterBtn{
+    display: flex;
+    position: fixed;
+    top: 100px;
+    left: 30px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ff5200 0%, #ff6b3d 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+
+}
