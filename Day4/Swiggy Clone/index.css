@@ -250,3 +250,28 @@ body {
     z-index: 1000;
 
 }
+
+.shimmerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.shimmerCard{
+    width: 280px;
+    height: 350px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}

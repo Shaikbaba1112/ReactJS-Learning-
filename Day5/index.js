@@ -18,5 +18,7 @@ async function catData(url){
     h1.innerText = fact;
     document.body.appendChild(h1);
 }
-catData("https://catfact.ninja/fact")
+catData("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.3472352&lng=78.5083082&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+
+
     
