@@ -6,6 +6,11 @@ function Shimmer(){
             <div className="shimmerCard"></div>
             <div className="shimmerCard"></div>
             <div className="shimmerCard"></div>
+            <div className="shimmerCard"></div>
+            <div className="shimmerCard"></div>
+            <div className="shimmerCard"></div>
+            <div className="shimmerCard"></div>
+            <div className="shimmerCard"></div>
         </div>
     );
 }
