@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RestaurantCard } from "./RestaurantCard";
-import { santoshNagarHotelList , charminarHotelList , swiggy} from "../utils/mockData";
-import  Shimmer  from "./shimmer";
+import { santoshNagarHotelList , charminarHotelList , swiggy} from "../utils/MockData";
+import  Shimmer  from "./Shimmer";
 
 
 
