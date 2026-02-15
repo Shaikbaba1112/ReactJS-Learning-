@@ -8,14 +8,15 @@ import  Shimmer  from "./Shimmer";
 export function Body(){
     let [restaurantList, setRestaurantList] = useState(swiggy);
     useEffect(()=>{
-        console.log("data called");
-        catData("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.3472352&lng=78.5083082&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+            catData("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.3472352&lng=78.5083082&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+            console.log("data called");
 
     },[]);
     
     async function catData(url){
         try {
             const rowData = await fetch(url);
+            console.log(rowData);
             const finalData = await rowData.json();
             setRestaurantList(
                 finalData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants

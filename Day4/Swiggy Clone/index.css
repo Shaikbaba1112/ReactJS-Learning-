@@ -437,3 +437,14 @@ body {
     .checkout-btn:hover {
       background-color: #e06f14;
     }
+
+.nav-items{
+    color: #1d1d1d;
+    text-decoration: none;
+    font-size: 17px;
+}    
+
+.restaurentCard-link{
+    text-decoration: none;
+    color: inherit;
+}

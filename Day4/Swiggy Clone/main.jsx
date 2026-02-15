@@ -7,6 +7,8 @@ import { About } from "./src/components/About";
 import { Contact } from "./src/components/Contact";
 import { Cart } from "./src/components/Cart";
 import { createBrowserRouter , RouterProvider } from "react-router-dom";
+import { Error } from "./src/components/Error";
+import { RestaurantPage } from "./src/components/RestaurantPage";
 
 const appRouter = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const appRouter = createBrowserRouter([
             {
                 path:"/Cart",
                 element:<Cart/>
+            },
+            {
+                path:"/restaurants/:resId",
+                element:<RestaurantPage/>
+            },
+            {
+                path:"*",
+                element:<Error/>
             }
         ]
     }
