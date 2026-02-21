@@ -1,17 +1,23 @@
-import { Link } from "react-router-dom";
+const RestaurantCard = ({hotelData}) => {
 
-export function RestaurantCard(props){
-    const id = props.santoshNagarHotelList.info.id;
-    return(
-        <Link to={`/restaurant/${id}`} className="restaurentCard-link">
-        <div className="restaurentCard">
-            <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${props.santoshNagarHotelList.info.cloudinaryImageId}`} alt={props.santoshNagarHotelList.info.name} className="cardImg"/>
-            <h2>{props.santoshNagarHotelList.info.name}</h2>
-            <h3>{props.santoshNagarHotelList.info.avgRating}star. {props.santoshNagarHotelList.info.sla.deliveryTime}mins</h3>
-            <h4>{props.santoshNagarHotelList.info.costForTwo}</h4>
-            <p>{props.santoshNagarHotelList.info.cuisines.join(", ")}</p>
-            <p>{props.santoshNagarHotelList.info.locality}</p>
-        </div>
-        </Link>
-    );
-}
+  return (
+    <div id={hotelData.info.id} className="res-card">
+      <div className="res-img-container">
+        <img
+          className="res-logo"
+          alt="res-logo"
+          src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${hotelData.info.cloudinaryImageId}`}
+        />
+      </div>
+      <h3 className="res-title">{hotelData.info.name}</h3>
+      <h4>{hotelData.info.cuisines.join(", ")}</h4>
+      <h4>⭐️ {hotelData.info.avgRating} Stars</h4>
+      <h4>
+        {hotelData.info.sla.deliveryTime} mins | {hotelData.info.costForTwo}
+      </h4>
+      <h4>📍{hotelData.info.locality}</h4>
+    </div>
+  );
+};
+
+export default RestaurantCard;

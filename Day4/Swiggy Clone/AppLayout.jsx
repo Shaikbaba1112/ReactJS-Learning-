@@ -1,11 +1,11 @@
-import { Navbar } from "./src/components/Navbar";
-import { Footer } from "./src/components/Footer";
+import Header from "./src/components/Header";
+import Footer from "./src/components/Footer";
 import { Outlet } from "react-router-dom";
 import UserContext from "./src/utils/UserContext";
 import { useEffect, useState } from "react";
 import HotelListContext from "./src/utils/HotelListContext";
 
-export const AppLayout = () => {
+const AppLayout = () => {
   const [hotelList, setHotelList] = useState([]);
   const [filteredHotelList, setFilteredHotelList] = useState([]);
 
@@ -38,7 +38,7 @@ export const AppLayout = () => {
             setFilteredHotelList,
           }}
         >
-          <Navbar />
+          <Header />
           <Outlet />
           <Footer />
         </HotelListContext.Provider>
@@ -46,3 +46,5 @@ export const AppLayout = () => {
     </div>
   );
 };
+
+export default AppLayout;

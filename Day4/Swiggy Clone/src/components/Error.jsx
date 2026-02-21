@@ -1,10 +1,11 @@
 import { useRouteError } from "react-router-dom";
-export const Error = () =>{
+
+const Error = () => {
     const error = useRouteError();
-    return (
-        <div>
-            <h1>OOPS!! 404 Error</h1>
-            <h2>{error.status} : {error.statusText}</h2>
-        </div>
-    );
+    return <div>
+        <h1>404 Not Found, Something went wrong 🤬</h1>
+        <p>{error.status} - {error.statusText}</p>
+    </div>
 }
+
+export default Error;

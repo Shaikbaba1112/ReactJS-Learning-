@@ -1,48 +1,90 @@
-import { useEffect, useState } from "react";
-import { RestaurantCard } from "./RestaurantCard";
-import { santoshNagarHotelList , charminarHotelList , swiggy} from "../utils/MockData";
-import  Shimmer  from "./Shimmer";
+import { useContext, useEffect, useState } from "react";
+import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { RESTAURANT_LIST_API } from "../utils/constants";
+import HotelListContext from "../utils/HotelListContext";
+import FilterByRating from "./FilterByRating";
 
+const Body = () => {
+  const { hotelList, setHotelList, filteredHotelList, setFilteredHotelList } =
+    useContext(HotelListContext);
+  const isOnline = useOnlineStatus();
 
+  useEffect(() => {
+    console.log("useEffect called");
+    fetchData();
+  }, []);
 
-export function Body(){
-    let [restaurantList, setRestaurantList] = useState(swiggy);
-    useEffect(()=>{
-            catData("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.3472352&lng=78.5083082&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-            console.log("data called");
+  async function fetchData() {
+    try {
+      const data = await fetch(RESTAURANT_LIST_API);
 
-    },[]);
-    
-    async function catData(url){
-        try {
-            const rowData = await fetch(url);
-            console.log(rowData);
-            const finalData = await rowData.json();
-            setRestaurantList(
-                finalData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            )
-            // console.log(finalData);
-        } catch (error) {
-            console.log("not found", error);
-        }
-   
-}
+      const json = await data.json();
 
-if(restaurantList.length === 0){
-    return <Shimmer />;
-}
-    return (<div id="body">        
-        <button id="filterBtn" onClick={()=>{
-            let filteredArr = santoshNagarHotelList.filter((item)=>{
-                return item.rating > 4.5;
-            });
-            setRestaurantList(filteredArr);
-        }}>filter button</button>
-            {
-            restaurantList.map((item) => (
-            <RestaurantCard key={item.info.id} santoshNagarHotelList={item} />
-            ))
-        }
-    </div>);
-}
+      console.log("Fetched data", json);
 
+      if (json?.data?.cards.length > 11) {
+        setHotelList(
+          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
+        setFilteredHotelList(
+          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
+      } else {
+        setHotelList(
+          json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
+        setFilteredHotelList(
+          json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
+      }
+    } catch (error) {
+      console.log("Error while fetching data", error);
+    }
+  }
+
+  console.log("body rendered");
+
+  if (!isOnline) {
+    return (
+      <div className="body">
+        <h1 style={{ padding: "10vh 1.5rem", textAlign: "center" }}>
+          🔴 You are offline. Please check your internet connection.
+        </h1>
+      </div>
+    );
+  }
+
+  if (!hotelList || hotelList.length === 0) {
+    return (
+      <div className="body">
+        <Shimmer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="body">
+      <FilterByRating />
+
+      <div className="res-container">
+        {filteredHotelList.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={`/restaurant/${restaurant.info.id}`}
+          >
+            <RestaurantCard hotelData={restaurant} />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Body;

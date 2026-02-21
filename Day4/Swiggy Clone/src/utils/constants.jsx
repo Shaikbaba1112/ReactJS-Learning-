@@ -1,1 +1,3 @@
-export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.3472352&lng=78.5083082&restaurantId=";
+export const HEADER_LOGO = 'https://imgs.search.brave.com/Be3YfzejROt6Mz2xKQA4dL8AxeiDBGWJh3P2U7__R48/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNiLzlh/LzI1LzNiOWEyNTcz/ODNjMWNmYmY2MWNl/NDI4NWZhMTgxMWQ4/LmpwZw'
+export const MENU_API = 'https://proxy.corsfix.com/?https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.374576568417947&lng=78.42981364578007&restaurantId='
+export const RESTAURANT_LIST_API = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.3472352&lng=78.5083082&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'

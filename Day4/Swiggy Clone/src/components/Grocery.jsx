@@ -1,6 +1,6 @@
 const Grocery = () => {
-    return <div style={{padding: "200px"}}>
-        <h1>Grocery Page</h1>
+    return <div className="grocery-style">
+        <h1 id="G">Grocery Page</h1>
         <p>Welcome to the grocery page</p>
         <p>Here you can find all the groceries you need</p>
     </div>

@@ -1,31 +1,22 @@
-export function Contact(){
-	return (
-		<div class="contact-container">
-    <h2>Contact Us</h2>
+const Contact = () => {
 
-    <form>
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" placeholder="Enter your name" required />
+
+  return (
+    <div className="contact-container">
+      <div className="contact-box">
+        <h2 id="contact-us">Contact Us</h2>
+        <p className="subtitle">We'd love to hear from you</p>
+
+        <form>
+          <input id="c-btn"type="text" placeholder="Your Name" required />
+          <input id="c-btn"type="email" placeholder="Your Email" required />
+          <textarea id="c-btn" placeholder="Your Message" rows="4" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
       </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="Enter your email" required />
-      </div>
-
-      <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Type your message..." required></textarea>
-      </div>
-
-      <button class="contact-btn">Send Message</button>
-    </form>
-
-    <div class="contact-info">
-      📧 support@example.com <br/>
-      📞 +91 12345 67890
     </div>
-  </div>
-	);
-}
+  );
+};
+
+export default Contact;
