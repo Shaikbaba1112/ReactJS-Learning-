@@ -28,7 +28,7 @@ export function Body(){
    
 }
 
-if(restaurantList.length === 1){
+if(restaurantList.length === 0){
     return <Shimmer />;
 }
     return (<div id="body">        

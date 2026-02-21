@@ -8,7 +8,10 @@ import { Contact } from "./src/components/Contact";
 import { Cart } from "./src/components/Cart";
 import { createBrowserRouter , RouterProvider } from "react-router-dom";
 import { Error } from "./src/components/Error";
-import { RestaurantPage } from "./src/components/RestaurantPage";
+import RestaurantMenu from "./src/components/RestaurantMenu";
+import { lazy, Suspense } from "react";
+
+const Grocery = lazy(()=> import("./src/components/Grocery"));
 
 const appRouter = createBrowserRouter([
     {
@@ -32,16 +35,17 @@ const appRouter = createBrowserRouter([
                 element:<Cart/>
             },
             {
-                path:"/restaurants/:resId",
-                element:<RestaurantPage/>
+                path:"/restaurant/:resId",
+                element:<RestaurantMenu/>
             },
             {
-                path:"*",
-                element:<Error/>
+                path:"/grocery",
+                element: <Suspense fallback={<h1 style={{padding: "200px"}}>Loading...</h1>}><Grocery /></Suspense>
             }
-        ]
-    }
-])
+        ],
+        errorElement:<Error/>,
+    },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(< RouterProvider router={appRouter} />);
